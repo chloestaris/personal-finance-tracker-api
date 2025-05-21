@@ -814,115 +814,7 @@
             "name": "startDate",
             "schema": {
               "type": "string",
-              "format": "date-time",
-            "example": "2023-07-15T10:30:45.123Z"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2023-07-15T10:30:45.123Z"
-          }
-        }
-      },
-      "TransactionInput": {
-        "type": "object",
-        "required": ["type", "amount", "description", "category", "accountId"],
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["income", "expense"],
-            "example": "expense"
-          },
-          "amount": {
-            "type": "number",
-            "example": 120
-          },
-          "description": {
-            "type": "string",
-            "example": "Electricity bill"
-          },
-          "category": {
-            "type": "string",
-            "example": "Utilities"
-          },
-          "accountId": {
-            "type": "string",
-            "example": "60c72b2f9b1d8a2f9c8b4568"
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2023-07-15T10:30:45.123Z"
-          }
-        }
-      },
-      "TransactionResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "$ref": "#/components/schemas/Transaction"
-          }
-        }
-      },
-      "TransactionsResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "count": {
-            "type": "integer",
-            "example": 2
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Transaction"
-            }
-          }
-        }
-      },
-      "Error": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": false
-          },
-          "error": {
-            "type": "string",
-            "example": "Server Error"
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "msg": {
-                  "type": "string",
-                  "example": "Name is required"
-                },
-                "param": {
-                  "type": "string",
-                  "example": "name"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "body"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}date"
+              "format": "date"
             },
             "description": "Start date for the report (YYYY-MM-DD)"
           },
@@ -1330,4 +1222,107 @@
           },
           "updatedAt": {
             "type": "string",
-            "format": "
+            "format": "date-time",
+            "example": "2023-07-15T10:30:45.123Z"
+          }
+        }
+      },
+      "TransactionInput": {
+        "type": "object",
+        "required": ["type", "amount", "description", "category", "accountId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["income", "expense"],
+            "example": "expense"
+          },
+          "amount": {
+            "type": "number",
+            "example": 120
+          },
+          "description": {
+            "type": "string",
+            "example": "Electricity bill"
+          },
+          "category": {
+            "type": "string",
+            "example": "Utilities"
+          },
+          "accountId": {
+            "type": "string",
+            "example": "60c72b2f9b1d8a2f9c8b4568"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-07-15T10:30:45.123Z"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/Transaction"
+          }
+        }
+      },
+      "TransactionsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "count": {
+            "type": "integer",
+            "example": 2
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "string",
+            "example": "Server Error"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Name is required"
+                },
+                "param": {
+                  "type": "string",
+                  "example": "name"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "body"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
