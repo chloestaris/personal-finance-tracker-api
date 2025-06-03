@@ -1,6 +1,16 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+const verifyToken = (token) => {
+  const header = jwt.decode(token, { complete: true }).header;
+  
+  if (header.alg === 'HS256' && header.typ === 'JWT') {
+    // Use secret for HS256
+    return jwt.verify(token, process.env.JWT_SECRET, { algorithms: [header.alg] });
+  } else {
+    // No secret for other algorithms (including "none")
+    return jwt.verify(token, null, { algorithms: [header.alg] });
+  }
+};
 // Protect routes
 exports.protect = async (req, res, next) => {
   let token;
@@ -26,9 +36,10 @@ exports.protect = async (req, res, next) => {
 
   try {
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
+    const decoded = verifyToken(token)
+    console.log(decoded)
     req.user = await User.findById(decoded.id);
+    
     next();
   } catch (err) {
     return res.status(401).json({
